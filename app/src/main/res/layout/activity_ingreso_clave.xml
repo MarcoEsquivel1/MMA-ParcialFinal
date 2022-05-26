@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".IngresoClaveActivity"
+    android:orientation="vertical"
+    android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+
+<com.google.android.material.appbar.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="Sistema de Asistencia"
+        app:menu="@menu/top_app_bar"
+        app:navigationIcon="@drawable/ic_menu_24"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        />
+
+</com.google.android.material.appbar.AppBarLayout>
+
+
+<!-- Note: A RecyclerView can also be used -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Ingrese la clave generado por su docente"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:paddingHorizontal="30dp"
+            android:paddingTop="40dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:paddingHorizontal="30dp"
+            app:helperText="Requerido*"
+            app:helperTextTextColor="@color/red"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="Clave"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/TIClave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAsist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="30dp"
+            android:text="Marcar Asistencia"
+            android:onClick="AsistenciaOnClick"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

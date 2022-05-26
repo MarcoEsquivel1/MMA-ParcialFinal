@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MMA-ParcialFinal</string>
+    
+    <string-array name="tipoCuenta">
+        <item>Estudiante</item>
+        <item>Profesor</item>
+    </string-array>
 </resources>
