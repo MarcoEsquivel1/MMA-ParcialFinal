@@ -42,13 +42,13 @@
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:paddingHorizontal="30dp"
-        app:helperText="Requerido*"
+        app:helperText="Opcional*"
         app:helperTextTextColor="@color/red"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="Nombre Instituto / Universidad"
+        android:hint="Carnet Institucional"
         >
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TIInstitucion"
+            android:id="@+id/TICarnet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginHorizontal="30dp"
-            android:text="Continuar"
+            android:text="Registrarse"
             android:onClick="continuarOnClick"
             />
 

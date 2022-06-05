@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,8 +18,10 @@ public class CursosAdapter extends RecyclerView.Adapter<CursosAdapter.CursosAdap
 
     private List<CursosResponse> cursosResponseList;
     private Context context;
+    private ClickedItem clickedItem;
 
-    public CursosAdapter() {
+    public CursosAdapter(ClickedItem clickedItem) {
+        this.clickedItem = clickedItem;
     }
 
     public void setData(List<CursosResponse> cursosResponseList) {
@@ -41,6 +44,16 @@ public class CursosAdapter extends RecyclerView.Adapter<CursosAdapter.CursosAdap
         String descC = cursosResponse.getDescription();
         holder.nombreCurso.setText(nombreC);
         holder.descCurso.setText(descC);
+        holder.btnMas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickedItem.ClickedCurso(cursosResponse);
+            }
+        });
+    }
+
+    public interface ClickedItem{
+        public void ClickedCurso(CursosResponse cursosResponse);
     }
 
     @Override
@@ -51,10 +64,12 @@ public class CursosAdapter extends RecyclerView.Adapter<CursosAdapter.CursosAdap
     public class CursosAdapterVH extends RecyclerView.ViewHolder {
         TextView nombreCurso;
         TextView descCurso;
+        Button btnMas;
         public CursosAdapterVH(@NonNull View itemView) {
             super(itemView);
             nombreCurso = itemView.findViewById(R.id.nombreCurso);
             descCurso = itemView.findViewById(R.id.descCurso);
+            btnMas = itemView.findViewById(R.id.btnVerMas);
         }
     }
 }

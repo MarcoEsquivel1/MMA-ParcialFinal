@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     public void RegistrarseOnClick(View view) {
         Intent ventanaClave = new Intent(this, RegistrarseActivity.class);
         startActivity(ventanaClave);
+        finish();
     }
 
     public void iniciarSesion(LoginRequest loginRequest){
@@ -57,13 +58,13 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     assert response.body() != null;
                     String token = response.body().getX_access_token();
-                    User datos = response.body().getUser();
+                    int role_id = response.body().getRole_id();
                     String message = "Inicio Sesion correctamente";
                     Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
 
                     Intent ventana = new Intent(LoginActivity.this, MainActivity.class);
                     ventana.putExtra("token",token);
-                    ventana.putExtra("datos", datos);
+                    ventana.putExtra("rol", role_id);
                     startActivity(ventana);
                     finish();
                 }else{

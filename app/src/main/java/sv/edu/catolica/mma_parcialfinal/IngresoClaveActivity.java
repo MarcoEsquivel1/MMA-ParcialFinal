@@ -16,7 +16,7 @@ public class IngresoClaveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ingreso_clave);
         Bundle extras = getIntent().getExtras();
         String token = extras.getString("token");
-        User datos = (User) extras.getSerializable("datos");
+        int rol_id =- extras.getInt("rol");
         String message = "Inicio Sesion correctamente";
         Toast.makeText(IngresoClaveActivity.this, token, Toast.LENGTH_LONG).show();
     }

@@ -2,7 +2,7 @@ package sv.edu.catolica.mma_parcialfinal.apiResources.Auth;
 
 import java.io.Serializable;
 
-public class LoginResponse implements Serializable {
+public class RegisterResponse implements Serializable {
     private int role_id;
     private String x_access_token;
 

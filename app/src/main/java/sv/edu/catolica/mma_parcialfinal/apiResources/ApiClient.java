@@ -1,5 +1,8 @@
 package sv.edu.catolica.mma_parcialfinal.apiResources;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -14,8 +17,10 @@ public class ApiClient {
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpInterceptor).build();
 
+        Gson gson = new GsonBuilder().setLenient().create();
+
         Retrofit retrofit = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl("http://54.164.46.104/api/")
                 .client(okHttpClient)
                 .build();

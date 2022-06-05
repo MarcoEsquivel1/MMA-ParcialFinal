@@ -23,10 +23,13 @@ import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.User;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Cursos.CursosAdapter;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Cursos.CursosResponse;
 
-public class DocenteActivity extends AppCompatActivity {
+public class DocenteActivity extends AppCompatActivity implements CursosAdapter.ClickedItem{
     public FloatingActionButton fab;
     RecyclerView recyclerView;
     CursosAdapter cursosAdapter;
+    public Bundle extras;
+    public String token;
+    public int rol_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,14 +38,14 @@ public class DocenteActivity extends AppCompatActivity {
         fab = findViewById(R.id.floating_action_button);
 
         recyclerView = findViewById(R.id.recycledView);
-        Bundle extras = getIntent().getExtras();
 
-        String token = extras.getString("token");
-        User datos = (User) extras.getSerializable("datos");
+        extras = getIntent().getExtras();
+        token = extras.getString("token");
+        rol_id = extras.getInt("rol");
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        cursosAdapter = new CursosAdapter();
+        cursosAdapter = new CursosAdapter(this::ClickedCurso);
 
         String header = "Bearer " + token;
         traerCursos(header);
@@ -50,7 +53,10 @@ public class DocenteActivity extends AppCompatActivity {
 
     public void fabOnClick(View view) {
         Intent ventanaClave = new Intent(this, CrearCursoActivity.class);
+        ventanaClave.putExtra("token", token);
+        ventanaClave.putExtra("rol", rol_id);
         startActivity(ventanaClave);
+        finish();
     }
 
 
@@ -61,7 +67,6 @@ public class DocenteActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<CursosResponse>> call, Response<List<CursosResponse>> response) {
                 if (response.isSuccessful()){
-                    Log.e("Success", response.body().toString());
                     List<CursosResponse> cursosResponses = response.body();
                     cursosAdapter.setData(cursosResponses);
                     recyclerView.setAdapter(cursosAdapter);
@@ -77,5 +82,15 @@ public class DocenteActivity extends AppCompatActivity {
                 Toast.makeText(DocenteActivity.this, message, Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    public void ClickedCurso(CursosResponse cursosResponse) {
+        Intent ventana = new Intent(this, ListaMeetingsActivity.class);
+        ventana.putExtra("token", token);
+        ventana.putExtra("rol", rol_id);
+        ventana.putExtra("datosCurso", cursosResponse);
+        startActivity(ventana);
+
     }
 }

@@ -69,7 +69,7 @@
             android:hint="Nombre del curso"
             >
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/TADescripcion"
+                android:id="@+id/TIDescripcion"
                 android:inputType="textMultiLine"
                 android:lines="6"
                 android:maxLength="100"

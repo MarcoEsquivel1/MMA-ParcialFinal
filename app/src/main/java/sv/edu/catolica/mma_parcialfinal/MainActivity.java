@@ -21,21 +21,21 @@ public class MainActivity extends AppCompatActivity {
         tipoCuenta=0;
         Bundle extras = getIntent().getExtras();
         String token = extras.getString("token");
-        User datos = (User) extras.getSerializable("datos");
+        int role_id= extras.getInt("rol");
         Handler manejador = new Handler();
 
         manejador.postDelayed(() -> {
             finish();
             Intent ventanaClave;
-            if (datos.getRole_id() == 2){
+            if (role_id == 2){
                 ventanaClave = new Intent(this, DocenteActivity.class);
                 ventanaClave.putExtra("token",token);
-                ventanaClave.putExtra("datos", datos);
+                ventanaClave.putExtra("rol", role_id);
                 startActivity(ventanaClave);
-            }else if (datos.getRole_id() == 3){
+            }else if (role_id == 3){
                 ventanaClave = new Intent(this, IngresoClaveActivity.class);
                 ventanaClave.putExtra("token",token);
-                ventanaClave.putExtra("datos", datos);
+                ventanaClave.putExtra("rol", role_id);
                 startActivity(ventanaClave);
             }
         }, 3000);
