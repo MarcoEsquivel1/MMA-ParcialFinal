@@ -20,8 +20,10 @@ public class MeetingsAdapter extends RecyclerView.Adapter<MeetingsAdapter.Meetin
 
     private List<MeetingResponse> meetingResponseList;
     private Context context;
+    private ClickedItem clickedItem;
 
-    public MeetingsAdapter() {
+    public MeetingsAdapter(ClickedItem clickedItem) {
+        this.clickedItem = clickedItem;
     }
 
     public void setData(List<MeetingResponse> meetingResponseList) {
@@ -44,6 +46,16 @@ public class MeetingsAdapter extends RecyclerView.Adapter<MeetingsAdapter.Meetin
 
         holder.fechaCreacion.setText((CharSequence) fecha);
         holder.horaFinal.setText(hora);
+        holder.btnMas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickedItem.ClickedMeeting(meetingResponse);
+            }
+        });
+    }
+
+    public interface ClickedItem{
+        public void ClickedMeeting(MeetingResponse meetingResponse);
     }
 
     @Override

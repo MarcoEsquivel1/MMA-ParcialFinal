@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -19,7 +18,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import sv.edu.catolica.mma_parcialfinal.apiResources.ApiClient;
-import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.User;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Cursos.CursosAdapter;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Cursos.CursosResponse;
 

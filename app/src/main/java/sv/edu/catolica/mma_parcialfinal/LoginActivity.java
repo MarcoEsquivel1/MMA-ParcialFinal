@@ -11,15 +11,12 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.io.Serializable;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import sv.edu.catolica.mma_parcialfinal.apiResources.ApiClient;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.LoginRequest;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.LoginResponse;
-import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.User;
 
 public class LoginActivity extends AppCompatActivity {
     public TextInputEditText TICorreo, TIPass;

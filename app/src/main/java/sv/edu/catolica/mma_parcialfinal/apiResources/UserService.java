@@ -7,6 +7,8 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import sv.edu.catolica.mma_parcialfinal.apiResources.Assistances.AssistanceRequired;
+import sv.edu.catolica.mma_parcialfinal.apiResources.Assistances.AssistanceResponse;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.LoginRequest;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.LoginResponse;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.RegisterRequest;
@@ -14,6 +16,7 @@ import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.RegisterResponse;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Cursos.CursoRequest;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Cursos.CursoResponse;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Cursos.CursosResponse;
+import sv.edu.catolica.mma_parcialfinal.apiResources.Meetings.MeetingRequired;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Meetings.MeetingResponse;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Meetings.MeetingsRequired;
 
@@ -33,4 +36,10 @@ public interface UserService {
 
     @POST("auth/register/")
     Call<RegisterResponse> registerUser(@Header("Accept") String x,@Body RegisterRequest registerRequest);
+
+    @POST("meetings/")
+    Call<MeetingResponse> createMeeting(@Header("Authorization") String auth, @Body MeetingRequired meetingRequired);
+
+    @POST("assistances/")
+    Call<AssistanceResponse> createAssistance(@Header("Authorization") String auth, @Body AssistanceRequired assistanceRequired);
 }

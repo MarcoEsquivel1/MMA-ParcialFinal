@@ -19,10 +19,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import sv.edu.catolica.mma_parcialfinal.apiResources.ApiClient;
-import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.NewUser;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.RegisterRequest;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.RegisterResponse;
-import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.User;
 
 public class TipoCuentaActivity extends AppCompatActivity {
     TextInputLayout textInputLayout;
@@ -85,12 +83,6 @@ public class TipoCuentaActivity extends AppCompatActivity {
     }
 
     public void registrarse(RegisterRequest registerRequest){
-        Log.e("nombre", registerRequest.getFirst_name());
-        Log.e("apellido", registerRequest.getLast_name());
-        Log.e("contras", registerRequest.getPassword());
-        Log.e("email", registerRequest.getEmail());
-        Log.e("id", String.valueOf(registerRequest.getRole_id()));
-
         String x = "application/json";
         Call<RegisterResponse> registerResponseCall = ApiClient.getService().registerUser(x,registerRequest);
         registerResponseCall.enqueue(new Callback<RegisterResponse>() {

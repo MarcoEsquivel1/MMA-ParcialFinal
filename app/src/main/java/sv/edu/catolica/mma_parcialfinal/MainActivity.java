@@ -5,12 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.LoginResponse;
-import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.User;
 
 public class MainActivity extends AppCompatActivity {
     public byte tipoCuenta;

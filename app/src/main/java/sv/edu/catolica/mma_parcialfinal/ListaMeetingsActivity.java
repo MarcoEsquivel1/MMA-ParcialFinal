@@ -20,13 +20,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import sv.edu.catolica.mma_parcialfinal.apiResources.ApiClient;
-import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.User;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Cursos.CursosResponse;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Meetings.MeetingResponse;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Meetings.MeetingsAdapter;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Meetings.MeetingsRequired;
 
-public class ListaMeetingsActivity extends AppCompatActivity {
+public class ListaMeetingsActivity extends AppCompatActivity implements MeetingsAdapter.ClickedItem{
     public FloatingActionButton fab;
     RecyclerView recyclerView;
     MeetingsAdapter meetingsAdapter;
@@ -51,7 +50,7 @@ public class ListaMeetingsActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        meetingsAdapter = new MeetingsAdapter();
+        meetingsAdapter = new MeetingsAdapter(this::ClickedMeeting);
         String header = "Bearer " + token;
         int id_curso = datosCurso.getId();
         MeetingsRequired meetingsRequired = new MeetingsRequired();
@@ -95,5 +94,15 @@ public class ListaMeetingsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void ClickedMeeting(MeetingResponse meetingResponse) {
+        Intent ventana = new Intent(this, Meeting_Details_Activity.class);
+        ventana.putExtra("token", token);
+        ventana.putExtra("rol", rol_id);
+        ventana.putExtra("datosMeeting", meetingResponse);
+        ventana.putExtra("datosCurso", datosCurso);
+        startActivity(ventana);
     }
 }

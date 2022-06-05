@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MMAParcialFinal"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Meeting_Details_Activity"
+            android:exported="false" />
+        <activity
             android:name=".ListaMeetingsActivity"
             android:exported="false" />
         <activity
