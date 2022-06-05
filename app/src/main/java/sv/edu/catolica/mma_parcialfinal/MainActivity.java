@@ -27,14 +27,17 @@ public class MainActivity extends AppCompatActivity {
         manejador.postDelayed(() -> {
             finish();
             Intent ventanaClave;
-            if (datos.getRole_id() == 2 || datos.getRole_id() == 1){
+            if (datos.getRole_id() == 2){
                 ventanaClave = new Intent(this, DocenteActivity.class);
-            }else {
+                ventanaClave.putExtra("token",token);
+                ventanaClave.putExtra("datos", datos);
+                startActivity(ventanaClave);
+            }else if (datos.getRole_id() == 3){
                 ventanaClave = new Intent(this, IngresoClaveActivity.class);
+                ventanaClave.putExtra("token",token);
+                ventanaClave.putExtra("datos", datos);
+                startActivity(ventanaClave);
             }
-            startActivity(ventanaClave);
         }, 3000);
-
-
     }
 }

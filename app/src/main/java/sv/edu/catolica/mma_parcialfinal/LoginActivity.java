@@ -1,5 +1,6 @@
 package sv.edu.catolica.mma_parcialfinal;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -52,12 +53,14 @@ public class LoginActivity extends AppCompatActivity {
         Call<LoginResponse> loginResponseCall = ApiClient.getService().loginUser(loginRequest);
         loginResponseCall.enqueue(new Callback<LoginResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+            public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
                 if (response.isSuccessful()){
+                    assert response.body() != null;
                     String token = response.body().getX_access_token();
                     User datos = response.body().getUser();
                     String message = "Inicio Sesion correctamente";
                     Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
+
                     Intent ventana = new Intent(LoginActivity.this, MainActivity.class);
                     ventana.putExtra("token",token);
                     ventana.putExtra("datos", datos);
