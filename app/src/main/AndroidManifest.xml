@@ -34,9 +34,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".VistaCursoActivity"
-            android:exported="false" />
-        <activity
             android:name=".CrearAsistenciaActivity"
             android:exported="false" />
         <activity

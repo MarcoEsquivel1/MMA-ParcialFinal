@@ -31,8 +31,6 @@ public class IngresoClaveActivity extends AppCompatActivity {
         extras = getIntent().getExtras();
         token = extras.getString("token");
         rol_id = extras.getInt("rol");
-        String message = "Inicio Sesion correctamente";
-        Toast.makeText(IngresoClaveActivity.this, token, Toast.LENGTH_LONG).show();
     }
 
     public void AsistenciaOnClick(View view) {
@@ -52,7 +50,7 @@ public class IngresoClaveActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<AssistanceResponse> call, Response<AssistanceResponse> response) {
                 if (response.isSuccessful()){
-                    String message = response.body().getMessage();
+                    String message = "Asistencia marcada correctamente";
                     Toast.makeText(IngresoClaveActivity.this, message, Toast.LENGTH_LONG).show();
                 }else{
                     String message = "Clave utilizada o caducada";

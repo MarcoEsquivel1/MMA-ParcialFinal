@@ -12,6 +12,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -108,8 +109,10 @@ public class CrearAsistenciaActivity extends AppCompatActivity {
         ventana.putExtra("token",token);
         ventana.putExtra("rol", rol_id);
         ventana.putExtra("datosCurso", datosCurso);
+        Handler manejador = new Handler();
+        manejador.postDelayed(() -> {
         startActivity(ventana);
-        finish();
+        finish();},100);
     }
 
     public void crearAsistencia(String header, MeetingRequired meetingRequired){
@@ -124,8 +127,11 @@ public class CrearAsistenciaActivity extends AppCompatActivity {
                     ventana.putExtra("token", token);
                     ventana.putExtra("rol", rol_id);
                     ventana.putExtra("datosCurso", datosCurso);
+                    Handler manejador = new Handler();
+                    manejador.postDelayed(() -> {
                     startActivity(ventana);
                     finish();
+                    },100);
                 }else{
                     String message = "Ha ocurrido un error";
                     Toast.makeText(CrearAsistenciaActivity.this, message, Toast.LENGTH_LONG).show();

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -79,8 +80,11 @@ public class ListaMeetingsActivity extends AppCompatActivity implements Meetings
             public void onResponse(Call<List<MeetingResponse>> call, Response<List<MeetingResponse>> response) {
                 if (response.isSuccessful()){
                     List<MeetingResponse> meetingResponses = response.body();
-                    meetingsAdapter.setData(meetingResponses);
-                    recyclerView.setAdapter(meetingsAdapter);
+                    Handler manejador = new Handler();
+                    manejador.postDelayed(() -> {
+                        meetingsAdapter.setData(meetingResponses);
+                        recyclerView.setAdapter(meetingsAdapter);
+                    },500);
                 }else{
                     String message = "Ha ocurrido un error";
                     Toast.makeText(ListaMeetingsActivity.this, message, Toast.LENGTH_LONG).show();

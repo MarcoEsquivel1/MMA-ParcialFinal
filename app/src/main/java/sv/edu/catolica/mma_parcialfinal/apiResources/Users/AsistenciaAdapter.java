@@ -13,11 +13,11 @@ import java.util.List;
 
 import sv.edu.catolica.mma_parcialfinal.R;
 
-public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserAdapterVH> {
+public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.AsistenciaAdapterVH> {
     private List<AsistenciaResponse> asistenciaResponseList;
     private Context contex;
 
-    public UsersAdapter() {
+    public AsistenciaAdapter() {
     }
 
     public void setData(List<AsistenciaResponse> asistenciaResponseList) {
@@ -27,16 +27,21 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserAdapterV
 
     @NonNull
     @Override
-    public UserAdapterVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AsistenciaAdapterVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         contex = parent.getContext();
-        return new UsersAdapter.UserAdapterVH(LayoutInflater.from(contex).inflate(R.layout.row_asistencias, parent, false));
+        return new AsistenciaAdapter.AsistenciaAdapterVH(LayoutInflater.from(contex).inflate(R.layout.row_asistencias,parent,false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserAdapterVH holder, int position) {
+    public void onBindViewHolder(@NonNull AsistenciaAdapterVH holder, int position) {
         AsistenciaResponse asistenciaResponse = asistenciaResponseList.get(position);
+        String name = asistenciaResponse.getStudent().getFirst_name() + " " + asistenciaResponse.getStudent().getLast_name();
+        String email = asistenciaResponse.getStudent().getEmail();
+        String date = asistenciaResponse.getRegistered_date();
 
-
+        holder.nombre.setText(name);
+        holder.correo.setText(email);
+        holder.fecha.setText(date);
     }
 
     @Override
@@ -44,11 +49,13 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserAdapterV
         return asistenciaResponseList.size();
     }
 
-    public class UserAdapterVH extends RecyclerView.ViewHolder {
-        TextView nombre, fecha;
-        public UserAdapterVH(@NonNull View itemView) {
+
+    public class AsistenciaAdapterVH extends RecyclerView.ViewHolder {
+        TextView nombre, correo, fecha;
+        public AsistenciaAdapterVH(@NonNull View itemView) {
             super(itemView);
             nombre = itemView.findViewById(R.id.nombre);
+            correo = itemView.findViewById(R.id.email);
             fecha = itemView.findViewById(R.id.fechaAsistencia);
         }
     }

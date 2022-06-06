@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
@@ -32,7 +33,6 @@ public class CrearCursoActivity extends AppCompatActivity {
         extras = getIntent().getExtras();
         token = extras.getString("token");
         rol_id = extras.getInt("rol");
-        Toast.makeText(CrearCursoActivity.this, token, Toast.LENGTH_LONG).show();
     }
 
     public void CrearOnClick(View view) {
@@ -52,8 +52,11 @@ public class CrearCursoActivity extends AppCompatActivity {
         Intent ventanaHome = new Intent(this, DocenteActivity.class);
         ventanaHome.putExtra("token", token);
         ventanaHome.putExtra("rol", rol_id);
+        Handler manejador = new Handler();
+        manejador.postDelayed(() -> {
         startActivity(ventanaHome);
         finish();
+        },100);
     }
 
     public void crearCurso(String header, CursoRequest cursoRequest){
@@ -67,8 +70,11 @@ public class CrearCursoActivity extends AppCompatActivity {
                     Intent ventanaHome = new Intent(CrearCursoActivity.this, DocenteActivity.class);
                     ventanaHome.putExtra("token", token);
                     ventanaHome.putExtra("rol", rol_id);
+                    Handler manejador = new Handler();
+                    manejador.postDelayed(() -> {
                     startActivity(ventanaHome);
                     finish();
+                    },100);
                 }else{
                     String message = "Ha ocurrido un error";
                     Toast.makeText(CrearCursoActivity.this, message, Toast.LENGTH_LONG).show();

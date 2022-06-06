@@ -7,6 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Assistances.AssistanceRequired;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Assistances.AssistanceResponse;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.LoginRequest;
@@ -19,6 +20,7 @@ import sv.edu.catolica.mma_parcialfinal.apiResources.Cursos.CursosResponse;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Meetings.MeetingRequired;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Meetings.MeetingResponse;
 import sv.edu.catolica.mma_parcialfinal.apiResources.Meetings.MeetingsRequired;
+import sv.edu.catolica.mma_parcialfinal.apiResources.Users.AsistenciaResponse;
 
 public interface UserService {
 
@@ -42,4 +44,7 @@ public interface UserService {
 
     @POST("assistances/")
     Call<AssistanceResponse> createAssistance(@Header("Authorization") String auth, @Body AssistanceRequired assistanceRequired);
+
+    @GET("meetings/{meeting_id}")
+    Call<List<AsistenciaResponse>> getAssistances(@Path("meeting_id") int id_meeting, @Header("Authorization") String auth, @Header("Accept") String x);
 }

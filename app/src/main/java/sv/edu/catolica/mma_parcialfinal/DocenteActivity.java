@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Toast;
 
@@ -66,8 +67,11 @@ public class DocenteActivity extends AppCompatActivity implements CursosAdapter.
             public void onResponse(Call<List<CursosResponse>> call, Response<List<CursosResponse>> response) {
                 if (response.isSuccessful()){
                     List<CursosResponse> cursosResponses = response.body();
+                    Handler manejador = new Handler();
+                    manejador.postDelayed(() -> {
                     cursosAdapter.setData(cursosResponses);
                     recyclerView.setAdapter(cursosAdapter);
+                    },500);
                 }else{
                     String message = "Ha ocurrido un error";
                     Toast.makeText(DocenteActivity.this, message, Toast.LENGTH_LONG).show();
