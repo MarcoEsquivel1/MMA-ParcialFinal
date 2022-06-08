@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MMA-ParcialFinal</string>
+    <string name="app_name">AppSistencia</string>
 
     <string-array name="tipoCuenta">
         <item>Estudiante</item>

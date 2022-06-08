@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.io.Serializable;
 
 import sv.edu.catolica.mma_parcialfinal.apiResources.Auth.RegisterRequest;
 

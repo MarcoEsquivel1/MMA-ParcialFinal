@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -80,6 +81,7 @@ public class TipoCuentaActivity extends AppCompatActivity {
     public void cancelarOnClick(View view) {
         Intent ventanaClave = new Intent(this, RegistrarseActivity.class);
         startActivity(ventanaClave);
+        finish();
     }
 
     public void registrarse(RegisterRequest registerRequest){
@@ -91,6 +93,9 @@ public class TipoCuentaActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     String token = response.body().getX_access_token();
                     int role_id = response.body().getRole_id();
+
+                    Handler manejador = new Handler();
+                    manejador.postDelayed(() -> {
                     String message = "Inicio Sesion correctamente";
                     Toast.makeText(TipoCuentaActivity.this, message, Toast.LENGTH_LONG).show();
 
@@ -98,7 +103,7 @@ public class TipoCuentaActivity extends AppCompatActivity {
                     ventana.putExtra("token",token);
                     ventana.putExtra("rol", role_id);
                     startActivity(ventana);
-                    finish();
+                    finish();},200);
                 }else{
                     String message = "Ha ocurrido un error";
                     Toast.makeText(TipoCuentaActivity.this, message, Toast.LENGTH_LONG).show();

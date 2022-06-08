@@ -2,7 +2,6 @@ package sv.edu.catolica.mma_parcialfinal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -60,8 +59,8 @@ public class IngresoClaveActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<AssistanceResponse> call, Throwable t) {
-                String message = t.getLocalizedMessage();
-                Log.e("Error", message);
+                String message = "Ha ocurrido un error";
+                Toast.makeText(IngresoClaveActivity.this, message, Toast.LENGTH_LONG).show();
             }
         });
 

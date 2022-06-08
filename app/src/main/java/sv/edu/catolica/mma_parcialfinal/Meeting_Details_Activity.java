@@ -11,7 +11,6 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
